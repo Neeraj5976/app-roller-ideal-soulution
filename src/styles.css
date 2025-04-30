@@ -1,373 +1,387 @@
+/* /src/styles.css */
+
+/* 1. Theme Variables */
 :root {
-  --primary: #000000;
-  --background: #ffffff;
-  --accent: #3d3d3d;
-  --gradient: linear-gradient(135deg, #000000 0%, #333333 100%);
-  --card-bg: #f9f9f9;
-  --hover-bg: #f0f0f0;
-}
-
-/* Dark theme variables */
-[data-theme='dark'] {
-  --primary: #ffffff;
-  --background: #121212;
-  --accent: #a0a0a0;
-  --gradient: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
-  --card-bg: #1e1e1e;
-  --hover-bg: #2d2d2d;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  transition: background-color 0.3s ease,
-              color 0.3s ease,
-              border-color 0.3s ease,
-              box-shadow 0.3s ease;
-}
-
-body {
-  background-color: var(--background);
-  color: var(--primary);
-  line-height: 1.6;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 40px;
-}
-
-nav {
-  padding: 25px 0;
-  position: fixed;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(20px);
-  z-index: 100;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.nav-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-size: 28px;
-  font-weight: 700;
-  text-decoration: none;
-  color: var(--primary);
-  letter-spacing: -1px;
-}
-
-.nav-links {
-  display: flex;
-  gap: 40px;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: var(--primary);
-  opacity: 0.7;
-  transition: all 0.3s ease;
-  font-size: 17px;
-  position: relative;
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background: var(--primary);
-  transition: width 0.3s ease;
-}
-
-.nav-links a:hover {
-  opacity: 1;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 120px 0;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  background: linear-gradient(45deg, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0) 100%);
-  top: -200px;
-  right: -200px;
-  z-index: -1;
-}
-
-.hero-content {
-  max-width: 700px;
-}
-
-.hero h1 {
-  font-size: 80px;
-  line-height: 1;
-  margin-bottom: 40px;
-  letter-spacing: -2px;
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: fadeIn 1s ease-out;
-}
-
-.hero p {
-  font-size: 26px;
-  opacity: 0.8;
-  margin-bottom: 50px;
-  line-height: 1.4;
-  animation: fadeIn 1s ease-out 0.2s backwards;
-}
-
-.features {
-  padding: 120px 0;
-  background: var(--card-bg);
-  position: relative;
-}
-
-.features h2 {
-  font-size: 48px;
-  margin-bottom: 20px;
-  letter-spacing: -1px;
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
-  margin-top: 60px;
-}
-
-.feature-card {
-  padding: 40px;
-  background: var(--background);
-  border-radius: 20px;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(128, 128, 128, 0.1);
-}
-
-.feature-card h3 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  letter-spacing: -0.5px;
-}
-
-.feature-card p {
-  opacity: 0.7;
-  font-size: 17px;
-  line-height: 1.6;
-}
-
-.feature-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 0, 0, 0.1);
-}
-
-.contact {
-  padding: 120px 0;
-  text-align: center;
-  background: var(--background);
-}
-
-.contact h2 {
-  font-size: 48px;
-  margin-bottom: 20px;
-  letter-spacing: -1px;
-}
-
-.contact p {
-  font-size: 20px;
-  opacity: 0.7;
-  margin-bottom: 40px;
-}
-
-.button {
-  display: inline-block;
-  padding: 18px 40px;
-  background: var(--gradient);
-  color: var(--background);
-  text-decoration: none;
-  border-radius: 40px;
-  font-size: 18px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 1s ease-out 0.4s backwards;
-}
-
-.button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+    --primary-color: #000000;
+    --background-color: #ffffff;
+    --accent-color: #3d3d3d;
+    --gradient: linear-gradient(135deg, #000000 0%, #333333 100%);
+    --card-bg: #f9f9f9;
+    --hover-bg: #f0f0f0;
+    --border-color-light: rgba(0, 0, 0, 0.05);
+    --border-color-card: rgba(128, 128, 128, 0.1);
+    --shadow-color-light: rgba(0, 0, 0, 0.05);
+    --shadow-color-button: rgba(0, 0, 0, 0.1);
+    --shadow-color-button-hover: rgba(0, 0, 0, 0.15);
+    --nav-bg: rgba(255, 255, 255, 0.8);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  
+  [data-theme="dark"] {
+    --primary-color: #ffffff;
+    --background-color: #121212;
+    --accent-color: #a0a0a0;
+    --gradient: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+    --card-bg: #1e1e1e;
+    --hover-bg: #2d2d2d;
+    --border-color-light: rgba(255, 255, 255, 0.08);
+    --border-color-card: rgba(128, 128, 128, 0.2);
+    --shadow-color-light: rgba(255, 255, 255, 0.05);
+    --shadow-color-button: rgba(255, 255, 255, 0.1);
+    --shadow-color-button-hover: rgba(255, 255, 255, 0.15);
+    --nav-bg: rgba(18, 18, 18, 0.8);
   }
-}
-
-@media (max-width: 768px) {
+  
+  /* Reset and Base Styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    line-height: 1.6;
+    /* 2. Global Transitions */
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  img, svg {
+    display: block;
+    max-width: 100%;
+  }
+  
+  section {
+    /* 9. Section Padding */
+    padding: 120px 0;
+  }
+  
   .container {
-    padding: 0 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
   }
   
-  .hero h1 {
-    font-size: 48px;
+  /* 3. Navigation Styling */
+  nav {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding: 25px 0;
+    background-color: var(--nav-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-color-light);
+    z-index: 100;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
   }
   
-  .hero p {
-    font-size: 20px;
+  .nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+  }
+  
+  /* 4. Logo and Navigation Links */
+  .logo {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -1px;
+    color: var(--primary-color);
   }
   
   .nav-links {
-    display: none;
+    display: flex;
+    align-items: center;
+    /* 4. Add 40px gap between navigation items */
+    gap: 40px;
   }
-
-  .features h2,
-  .contact h2 {
-    font-size: 36px;
+  
+  .nav-links a {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--primary-color);
+    opacity: 0.7;
+    position: relative;
+    padding-bottom: 4px;
   }
-
-  .feature-card {
-    padding: 30px;
+  
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
   }
-} 
-
-#root{
+  
+  .nav-links a:hover {
+    opacity: 1;
+  }
+  
+  .nav-links a:hover::after {
     width: 100%;
   }
   
-/* Add these new styles for the theme toggle */
-.nav-left {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.theme-toggle {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: transparent;
-  border: 2px solid var(--primary);
-  padding: 8px;
-  cursor: pointer;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.theme-toggle:hover {
-  transform: scale(1.05);
-}
-
-.toggle-circle {
-  width: 18px;
-  height: 18px;
-  background-color: var(--primary);
-  border-radius: 50%;
-  position: absolute;
-  transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
-}
-
-[data-theme='dark'] .toggle-circle {
-  transform: translateX(10px);
-}
-
-[data-theme='light'] .toggle-circle {
-  transform: translateX(-10px);
-}
-
-.sun-icon,
-.moon-icon {
-  width: 16px;
-  height: 16px;
-  position: absolute;
-  color: var(--primary);
-  transition: all 0.3s ease;
-}
-
-.sun-icon {
-  opacity: 1;
-  transform: rotate(0deg);
-}
-
-.moon-icon {
-  opacity: 0;
-  transform: rotate(90deg);
-}
-
-[data-theme='dark'] .sun-icon {
-  opacity: 0;
-  transform: rotate(-90deg);
-}
-
-[data-theme='dark'] .moon-icon {
-  opacity: 1;
-  transform: rotate(0deg);
-}
-
-/* Update existing styles to support dark theme */
-.feature-card {
-  background: var(--background);
-  border: 1px solid rgba(128, 128, 128, 0.1);
-}
-
-.features {
-  background: var(--card-bg);
-}
-
-.contact {
-  background: var(--background);
-}
-
-/* Add focus styles for accessibility */
-.theme-toggle:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--accent);
-}
-
-/* Ensure text remains readable in dark mode */
-[data-theme='dark'] .feature-card p,
-[data-theme='dark'] .hero p,
-[data-theme='dark'] .contact p {
-  opacity: 0.8;
-}
-
-/* Adjust button styling for dark mode */
-[data-theme='dark'] .button {
-  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
-}
+  /* 5. Theme Toggle Button */
+  .theme-toggle {
+    width: 44px;
+    height: 44px;
+    border: 2px solid var(--primary-color);
+    background-color: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 8px; /* Add 8px padding */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+  }
   
+  .theme-toggle .toggle-circle {
+    width: 18px; /* 18px x 18px toggle circle */
+    height: 18px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    position: absolute;
+    left: 7px; /* Initial position for light mode */
+    transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1), background-color 0.3s ease; /* Use cubic-bezier for animation */
+  }
+  
+  [data-theme="dark"] .theme-toggle .toggle-circle {
+    transform: translateX(10px); /* Add 10px translation for toggle movement */
+  }
+  
+  .theme-toggle svg {
+    width: 16px; /* Set icon size to 16px */
+    height: 16px;
+    position: absolute;
+    fill: var(--primary-color);
+    transition: opacity 0.3s ease, transform 0.3s ease, fill 0.3s ease;
+  }
+  
+  .theme-toggle .sun-icon {
+    opacity: 1;
+    transform: translateX(-8px);
+  }
+  
+  .theme-toggle .moon-icon {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+  
+  [data-theme="dark"] .theme-toggle .sun-icon {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  
+  [data-theme="dark"] .theme-toggle .moon-icon {
+    opacity: 1;
+    transform: translateX(8px);
+  }
+  
+  
+  /* 6. Hero Section */
+  .hero {
+    min-height: calc(100vh - 95px); /* Adjust based on nav height */
+    display: flex;
+    align-items: center;
+    text-align: center;
+    /* Add 120px padding top and bottom */
+    padding: 120px 0;
+    animation: fadeIn 1s ease-out forwards; /* Apply fadeIn animation */
+  }
+  
+  .hero-content {
+    max-width: 700px; /* Limit content width */
+    margin: 0 auto;
+  }
+  
+  .hero h1 {
+    font-size: 80px; /* Use 80px font size for headline */
+    font-weight: 600;
+    letter-spacing: -2px; /* -2px letter spacing */
+    margin-bottom: 20px;
+    line-height: 1.1;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+  }
+  
+  .hero p {
+    font-size: 26px; /* Set description to 26px */
+    line-height: 1.4; /* 1.4 line height */
+    color: var(--accent-color);
+    margin-bottom: 40px;
+    animation: fadeIn 1s ease-out 0.2s forwards; /* Add 0.2s delay */
+    opacity: 0; /* Start hidden for animation */
+    transition: color 0.3s ease;
+  }
+  
+  .hero .button {
+      animation: fadeIn 1s ease-out 0.4s forwards; /* Add 0.4s delay */
+      opacity: 0; /* Start hidden for animation */
+  }
+  
+  /* 9. Section Headlines */
+  h2 {
+    font-size: 48px;
+    font-weight: 600;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+  }
+  
+  section > .container > p {
+    font-size: 18px;
+    color: var(--accent-color);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 60px auto;
+    transition: color 0.3s ease;
+  }
+  
+  /* 7. Feature Cards */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px; /* Set up 40px gap in features grid */
+  }
+  
+  .features-grid > div {
+    background-color: var(--card-bg);
+    padding: 40px; /* Use 40px padding */
+    border-radius: 20px; /* Apply 20px border radius */
+    border: 1px solid var(--border-color-card); /* Add 1px border */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease; /* 2. Global Transitions */
+  }
+  
+  .features-grid > div:hover {
+    transform: translateY(-10px); /* Transform cards by translateY(-10px) on hover */
+    box-shadow: 0 20px 40px var(--shadow-color-light); /* Add box-shadow on hover */
+    background-color: var(--hover-bg);
+  }
+  
+  .features-grid h3 {
+    font-size: 24px; /* Use 24px for card titles */
+    font-weight: 600;
+    letter-spacing: -0.5px; /* -0.5px letter spacing */
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+  }
+  
+  .features-grid p {
+    font-size: 17px; /* Set card description to 17px */
+    line-height: 1.6; /* 1.6 line height */
+    color: var(--accent-color);
+    transition: color 0.3s ease;
+  }
+  
+  /* 8. Buttons */
+  .button {
+    display: inline-block;
+    padding: 18px 40px; /* Set padding to 18px 40px */
+    border-radius: 40px; /* Use 40px border radius */
+    background-image: var(--gradient);
+    color: var(--background-color); /* Text color contrasts with gradient */
+    font-size: 18px; /* Set font size to 18px */
+    font-weight: 600; /* with 600 weight */
+    box-shadow: 0 10px 20px var(--shadow-color-button); /* Add box-shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-image 0.3s ease, color 0.3s ease; /* 2. Global Transitions */
+  }
+  
+  .button:hover {
+    transform: translateY(-2px); /* Transform by translateY(-2px) on hover */
+    box-shadow: 0 15px 30px var(--shadow-color-button-hover); /* Increase shadow on hover */
+  }
+  
+  /* Contact Section Specifics */
+  .contact {
+    text-align: center;
+  }
+  
+  .contact h2 {
+     margin-bottom: 15px;
+  }
+  
+  .contact p {
+     margin-bottom: 40px;
+  }
+  
+  /* 11. Animation Keyframes */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  
+  /* 10. Responsive Adjustments */
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 20px; /* Set container padding to 20px */
+    }
+  
+    /* Hide navigation links */
+    .nav-links {
+      display: none;
+    }
+  
+    .hero {
+      padding: 80px 0;
+      min-height: calc(100vh - 80px); /* Adjust based on smaller nav height if changed */
+    }
+  
+    .hero h1 {
+      font-size: 48px; /* Reduce hero headline to 48px */
+    }
+  
+    .hero p {
+      font-size: 20px; /* Reduce hero description to 20px */
+    }
+  
+    section {
+      padding: 80px 0;
+    }
+  
+    h2 {
+      font-size: 36px; /* Change section headlines to 36px */
+    }
+  
+    .features-grid > div {
+      padding: 30px; /* Reduce card padding to 30px */
+    }
+  
+    .button {
+      padding: 15px 30px;
+      font-size: 16px;
+    }
+  }
