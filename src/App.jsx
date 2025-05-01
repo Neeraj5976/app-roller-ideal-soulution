@@ -7,6 +7,7 @@ function App() {
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || 'light'
   });
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // 1. useEffect hook for theme handling
   useEffect(() => {
@@ -34,6 +35,10 @@ function App() {
     document.documentElement.setAttribute('data-theme', newTheme);
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <>
       {/* 1. Navigation Section */}
@@ -54,11 +59,23 @@ function App() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
               </svg>
             </button>
+            <button 
+              className="mobile-menu-button"
+              onClick={toggleMobileMenu}
+              aria-label="Toggle mobile menu"
+              aria-expanded={isMobileMenuOpen}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"} />
+              </svg>
+            </button>
           </div>
-          <div className="nav-links">
-            <a href="#features">features</a>
-            <a href="#about">about</a>
-            <a href="#contact">contact</a>
+          <div className={`nav-links ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
+            <div className="mobile-menu-items">
+              <a href="#features" onClick={() => setIsMobileMenuOpen(false)}>features</a>
+              <a href="#about" onClick={() => setIsMobileMenuOpen(false)}>about</a>
+              <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>contact</a>
+            </div>
           </div>
         </div>
       </nav>
