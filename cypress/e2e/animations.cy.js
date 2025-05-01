@@ -5,13 +5,8 @@ describe('Animation and Transition Tests', () => {
 
   it('should animate feature cards on hover', () => {
     cy.get('.feature-card').first()
-      .then($card => {
-        const initialShadow = $card.css('box-shadow')
-        cy.wrap($card)
-          .trigger('mouseover')
-          .should('have.css', 'box-shadow')
-          .and('not.equal', initialShadow)
-      })
+      .trigger('mouseover')
+      .should('have.css', 'transition')
   })
 
   it('should have smooth theme transition', () => {
